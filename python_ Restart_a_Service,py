@@ -1,0 +1,7 @@
+import subprocess
+
+# Specify service name
+service_name = 'service_name'
+
+# Restart service
+subprocess.run(['systemctl', 'restart', service_name])
