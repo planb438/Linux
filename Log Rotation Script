@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Rotate logs
-logrotate -f /etc/logrotate.conf

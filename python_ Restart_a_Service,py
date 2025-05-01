@@ -1,7 +1,66 @@
-import subprocess
+import subprocess   
+# This script restarts a service on a Linux system using systemctl.
+# It uses the subprocess module to run system commands.
+# The script is useful for automating service management tasks.
+# It can be used to restart services after configuration changes or to recover from service failures.
+# The script can be run as a standalone program or imported as a module.
 
 # Specify service name
 service_name = 'service_name'
+# Replace 'service_name' with the actual name of the service you want to restart
+# Check if the service is running   
+try:
+    result = subprocess.run(['systemctl', 'is-active', service_name], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if result.stdout.decode('utf-8').strip() == 'active':
+        print(f"{service_name} is running.")
+    else:
+        print(f"{service_name} is not running.")
+except subprocess.CalledProcessError as e:
+    print(f"Error checking service status: {e.stderr.decode('utf-8').strip()}")
+    exit(1)
+# Restart the service                  
+try:
+    result = subprocess.run(['systemctl', 'restart', service_name], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(f"{service_name} restarted successfully.")
+except subprocess.CalledProcessError as e:
+    print(f"Error restarting service: {e.stderr.decode('utf-8').strip()}")
+    exit(1) 
+# Check the status of the service after restart 
+try:
+    result = subprocess.run(['systemctl', 'is-active', service_name], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if result.stdout.decode('utf-8').strip() == 'active':
+        print(f"{service_name} is running after restart.")
+    else:
+        print(f"{service_name} is not running after restart.")
+except subprocess.CalledProcessError as e:
+    print(f"Error checking service status: {e.stderr.decode('utf-8').strip()}")
+    exit(1)
+# Note: This script requires root privileges to restart services.
+# It can be run with sudo or as a root user.
+# The script uses the subprocess module to run system commands.
+# The subprocess.run function is used to execute commands and capture output.
+# The check=True argument raises an exception if the command fails.     
+# The stdout and stderr arguments capture standard output and error messages.
+# The script uses the decode method to convert byte strings to regular strings.
+# The script prints messages to indicate the status of the service and any errors encountered.
+# The script can be modified to include additional features such as logging, error handling, and email notifications.
+# The script can be extended to include options for checking service status, enabling/disabling services, and viewing logs.
+# The script can be customized to suit specific service management requirements and workflows.
+# The script is written in Python and can be run on any platform that supports Python.
+# The script is compatible with Python 3.x and uses standard libraries.
+# The script is easy to understand and modify, making it suitable for both beginners and experienced programmers.
+# The script can be used as a starting point for building more complex service management solutions.    
 
-# Restart service
-subprocess.run(['systemctl', 'restart', service_name])
+# The script can be integrated with other tools and frameworks for enhanced functionality.
+# The script can be scheduled to run at regular intervals using a task scheduler or cron job.           
+# The script can be modified to include options for real-time monitoring and alerting.  
+
+# The script can be customized to suit specific service management requirements and workflows.
+# The script can be used to automate service management tasks in cloud environments and containerized applications.
+# The script can be integrated with configuration management tools for automated deployments.
+# The script can be used to manage services on remote servers using SSH or other remote management tools.
+# The script can be extended to include options for service health checks and performance monitoring.
+# The script can be used to automate service management tasks in DevOps and CI/CD pipelines.
+# The script can be integrated with incident management systems for automated incident response.
+# The script can be used to manage services in microservices architectures and distributed systems.
+# The script can be extended to include options for service discovery and load balancing.
