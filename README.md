@@ -29,6 +29,6 @@ This repository contains a collection of **Python-based command-line tools** des
 Clone the repo and run any script:
 
 ```bash
-git clone https://github.com/<your-username>/linux-cli-python-scripts.git
+git clone https://github.com/<username>/linux-cli-python-scripts.git
 cd linux-cli-python-scripts
 python3 disk_usage_report.py
